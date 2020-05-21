@@ -1,0 +1,49 @@
+/*************** 
+ * Following is the Node class already written 
+class LinkedListNode<T> {
+	T data;
+	LinkedListNode<T> next;
+
+	public Node(T data) {
+		this.data = data;
+	}
+}
+ ***************/
+
+public class Solution {
+
+	public static LinkedListNode<Integer> deleteIthNodeRec(LinkedListNode<Integer> head, int i){
+		 LinkedListNode<Integer> temp=head;
+        if(head==null){
+return null;
+        }
+        int count=0;
+        
+        while(temp!=null)
+        {
+temp=temp.next;
+            count++;
+        }
+        
+        if(i>count-1){
+return head;
+        }
+        temp=head;
+        
+        if(i==0)
+        {
+		head=temp.next;
+            return head;
+        }
+         LinkedListNode<Integer> prev=null;
+        int len=0;
+        while(len<i){
+            prev=temp;
+            temp=temp.next;
+            len++;
+        }
+        prev.next=temp.next;
+        return head;
+		
+	}
+}
